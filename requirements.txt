@@ -1,0 +1,24 @@
+# Core data & ML
+numpy
+pandas
+scikit-learn
+joblib
+
+# Visualization (notebooks)
+matplotlib
+seaborn
+
+# API
+fastapi
+uvicorn[standard]
+pydantic
+
+# Streamlit UI
+streamlit
+requests
+
+# Testing
+pytest
+
+# Utilities
+python-dotenv

@@ -79,7 +79,7 @@ num_pipeline=Pipeline(steps=[
 #--------------------------------------------
 cat_pipeline=Pipeline(steps=[
     ("imputer",SimpleImputer(strategy="most_frequent")),# imputes missing value with most_frequent value
-    ("encoder",OneHotEncoder(handle_unknown="ignore",sparse=False)) # change catagorical to number
+    ("encoder",OneHotEncoder(handle_unknown="ignore",sparse_output=False)) # change catagorical to number
 
 ])
 

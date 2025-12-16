@@ -59,7 +59,12 @@ class ModelTrainer:
             mlflow.log_params(model.get_params())
             mlflow.log_metrics(metrics)
             # Just log the model inside the run
-            mlflow.sklearn.log_model(model, artifact_path=name)
+            mlflow.sklearn.log_model(
+             sk_model=model,
+             artifact_path="model",
+            registered_model_name="CreditRiskModel"
+)
+
 
 # Or if you want to register it
 # mlflow.sklearn.log_model(model, artifact_path="model", registered_model_name=name)

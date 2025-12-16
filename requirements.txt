@@ -25,3 +25,8 @@ python-dotenv
 
 # machine learning flow 
 mlflow
+fastapi
+uvicorn
+pydantic
+black   # optional for code formatting
+flake8  # for linting

@@ -22,3 +22,6 @@ pytest
 
 # Utilities
 python-dotenv
+
+# machine learning flow 
+mlflow

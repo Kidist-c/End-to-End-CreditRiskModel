@@ -2,7 +2,7 @@ import mlflow
 import mlflow.sklearn
 import numpy as np
 from fastapi import FastAPI
-from src.api.pydantic_models import PredictionRequest, PredictionResponse
+from api.pydantic_models import PredictionRequest, PredictionResponse
 
 # -------------------------------
 # Load model from MLflow Registry

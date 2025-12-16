@@ -7,7 +7,7 @@ from sklearn.cluster import KMeans #Clustering aligorithm
 
 # difine function for target proxy
 def create_proxy_target(df,
-                        customer_col="CustomerID",
+                        customer_col="CustomerId",
                         datetime_col="TransactionStartTime",
                         amount_col="Amount",
                         n_clusters=3, #number of clusters for kMeans

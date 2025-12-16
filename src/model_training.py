@@ -41,7 +41,7 @@ class ModelTrainer:
     #--------------------------------------------------------------------
     def train_model(self,name:str):
         if name not in self.models:
-            raise ValueError(f"model{model}not added")
+            raise ValueError(f"model{name}not added")
         model=self.models[name]
         # mlflow experiment tracking
         with mlflow.start_run(run_name=name):
@@ -56,9 +56,15 @@ class ModelTrainer:
                 "roc_auc":roc_auc_score(self.Y_test,model.predict_proba(self.X_test)[:,1])
             }
             # log the model and matrix to mlflow
-            mlflow.log_params(model.get_params)
+            mlflow.log_params(model.get_params())
             mlflow.log_metrics(metrics)
-            mlflow.sklearn.log_model(model,artifact_path=f"models{name}")
+            # Just log the model inside the run
+            mlflow.sklearn.log_model(model, artifact_path=name)
+
+# Or if you want to register it
+# mlflow.sklearn.log_model(model, artifact_path="model", registered_model_name=name)
+
+            
             return metrics
     def train_all(self):
          """Train all models and return results"""
@@ -75,7 +81,7 @@ class ModelTrainer:
         
         model = self.models[name]
         grid_search = GridSearchCV(model, param_grid, cv=cv, scoring=scoring, n_jobs=-1)
-        grid_search.fit(self.X_train, self.y_train)
+        grid_search.fit(self.X_train, self.Y_train)
         
         # Update the model with the best estimator
         self.models[name] = grid_search.best_estimator_
